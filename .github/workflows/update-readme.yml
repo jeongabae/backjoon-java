@@ -36,4 +36,6 @@ jobs: # 실제 실행될 내용
       env:
         BACKJOON_PAT: ${{ secrets.BACKJOON_PAT }}
       run: |
-        git push
+        git remote set-url origin https://x-access-token:${BACKJOON_PAT}@github.com/jeongabae/backjoon-java.git
+        git pull --rebase
+        git push origin main
