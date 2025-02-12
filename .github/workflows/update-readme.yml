@@ -34,6 +34,6 @@ jobs: # 실제 실행될 내용
         git pull --rebase
     - name: Push changes # 4) 메인에 푸시
       env:
-        GITHUB_TOKEN: ${{ secrets.BACKJOON_PAT }}
+        BACKJOON_PAT: ${{ secrets.BACKJOON_PAT }}
       run: |
         git push
