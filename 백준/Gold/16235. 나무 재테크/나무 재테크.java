@@ -52,7 +52,7 @@ public class Main {
             trees.add(new Tree(x, y, age));
         }
 
-        for (int year = 0; year < K; year++) {
+        while (K-->0) {
             simulate();
         }
 
