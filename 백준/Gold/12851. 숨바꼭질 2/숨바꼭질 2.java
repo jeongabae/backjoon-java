@@ -11,7 +11,7 @@ public class Main {
 		n = Integer.parseInt(st.nextToken());
 		k = Integer.parseInt(st.nextToken());
 
-		ArrayDeque<Integer> q = new ArrayDeque<>();
+		Queue<Integer> q = new ArrayDeque<>();
 		q.offer(n);
 		arr[n] = 1;
 		cnt[n] = 1;
