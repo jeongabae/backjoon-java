@@ -38,7 +38,7 @@ jobs: # 실제 실행될 내용
         git pull --rebase
     - name: Push changes # 4) 메인에 푸시
       env:
-        BACKJOON_PAT: ${{ secrets.BACKJOON_PAT }}
+        BACKJOON_PAT: ${{ secrets.BACKJOON_SS }}
       run: |
         git remote set-url origin https://${{ github.actor }}:${BACKJOON_PAT}@github.com/jeongabae/backjoon-java.git
         git pull --rebase
