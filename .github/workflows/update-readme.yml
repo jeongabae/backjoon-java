@@ -28,7 +28,11 @@ jobs: # 실제 실행될 내용
         git config --global user.name 'jeongabae' # 유저명
         git config --global user.email 'gabea52@gmail.com' # 유저 이메일
         git add -A
-        git commit -am "auto update README.md" # 커밋 메시지
+        if ! git diff --cached --quiet; then
+          git commit -m "auto update README.md"
+        else
+          echo "No changes to commit."
+        fi
     - name: Pull latest changes
       run: |
         git pull --rebase
