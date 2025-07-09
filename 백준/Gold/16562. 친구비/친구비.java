@@ -6,10 +6,8 @@ public class Main {
     static int[] cost;
     static boolean[] v;
     static int find(int x){
-        if(parent[x]!=x){
-            parent[x] = find(parent[x]);
-        }
-        return parent[x];
+        if(parent[x]==x) return x;
+        return parent[x]=find(parent[x]);
     }
 
     static void union(int a, int b) {
