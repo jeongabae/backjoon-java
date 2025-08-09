@@ -1,57 +1,26 @@
 import java.util.*;
+import java.util.regex.*;
 
 class Solution {
+    private static final Pattern P = Pattern.compile("^([^0-9]+)([0-9]{1,5})");
+
     public String[] solution(String[] files) {
-        FileToken[] list = new FileToken[files.length];
+        Arrays.sort(files, (s1, s2) -> {
+            Matcher m1 = P.matcher(s1);
+            Matcher m2 = P.matcher(s2);
+            m1.find();
+            m2.find();
 
-        for (int i = 0; i < files.length; i++) {
-            list[i] = parse(files[i], i); // 파싱: HEAD/NUMBER만 필요
-        }
+            // HEAD 비교 (대소문자 무시)
+            int headCmp = m1.group(1).compareToIgnoreCase(m2.group(1));
+            if (headCmp != 0) return headCmp;
 
-        Arrays.sort(list, (a, b) -> {
-            int h = a.head.compareTo(b.head); // 이미 대문자 저장
-            if (h != 0) return h;
-            int n = Integer.compare(a.number, b.number);
-            if (n != 0) return n;
-            return Integer.compare(a.idx, b.idx); // 안정성 보강(원래 자바는 안정 정렬)
+            // NUMBER 비교 (정수 비교)
+            int n1 = Integer.parseInt(m1.group(2));
+            int n2 = Integer.parseInt(m2.group(2));
+            return Integer.compare(n1, n2);
         });
 
-        String[] ans = new String[files.length];
-        for (int i = 0; i < files.length; i++) ans[i] = list[i].original;
-        return ans;
-    }
-
-    private FileToken parse(String s, int idx) {
-        int n = s.length();
-        int i = 0;
-
-        // 1) HEAD: 첫 숫자 전까지
-        while (i < n && !Character.isDigit(s.charAt(i))) i++;
-        String head = s.substring(0, i);
-
-        // 2) NUMBER: 최대 5자리 숫자
-        int numStart = i, cnt = 0;
-        while (i < n && Character.isDigit(s.charAt(i)) && cnt < 5) {
-            i++;
-            cnt++;
-        }
-        String numberStr = s.substring(numStart, i);
-        int number = numberStr.isEmpty() ? 0 : Integer.parseInt(numberStr);
-
-        return new FileToken(idx, head.toUpperCase(), number, s);
-    }
-
-    static class FileToken {
-        final int idx;
-        final String head;
-        final int number;
-        final String original;
-
-        FileToken(int idx, String head, int number, String original) {
-            this.idx = idx;
-            this.head = head;
-            this.number = number;
-            this.original = original;
-        }
+        return files;
     }
 }
