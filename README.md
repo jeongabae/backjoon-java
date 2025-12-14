@@ -141,6 +141,7 @@
 |5014. 스타트링크|[링크](./%EB%B0%B1%EC%A4%80/Silver/5014.%E2%80%85%EC%8A%A4%ED%83%80%ED%8A%B8%EB%A7%81%ED%81%AC/%EC%8A%A4%ED%83%80%ED%8A%B8%EB%A7%81%ED%81%AC.java)|
 |5567. 결혼식|[링크](./%EB%B0%B1%EC%A4%80/Silver/5567.%E2%80%85%EA%B2%B0%ED%98%BC%EC%8B%9D/%EA%B2%B0%ED%98%BC%EC%8B%9D.java)|
 |7562. 나이트의 이동|[링크](./%EB%B0%B1%EC%A4%80/Silver/7562.%E2%80%85%EB%82%98%EC%9D%B4%ED%8A%B8%EC%9D%98%E2%80%85%EC%9D%B4%EB%8F%99/README.md)|
+|8979. 올림픽|[링크](./%EB%B0%B1%EC%A4%80/Silver/8979.%E2%80%85%EC%98%AC%EB%A6%BC%ED%94%BD/README.md)|
 ## 📚 프로그래머스
 ### 🚀 1 
 | 문제번호 | 링크 |
