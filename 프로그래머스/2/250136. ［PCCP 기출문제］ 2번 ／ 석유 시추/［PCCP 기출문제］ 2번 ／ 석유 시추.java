@@ -35,7 +35,7 @@ class Solution {
         return max;
     }
     
-    public int bfs(int x, int y, Set<Integer> colSet){
+    private int bfs(int x, int y, Set<Integer> colSet){
         Queue<int[]> q = new ArrayDeque<>();
         q.offer(new int[]{x,y});
         v[x][y] = true;
