@@ -2,29 +2,33 @@ import java.util.*;
 
 class Solution {
     public long solution(int n, int[] times) {
-        long left = 1;  // 최소 시간
-        long right = (long) Arrays.stream(times).max().getAsInt() * n;  // 최대 시간 (최악의 경우)
-        long answer = right;
+        long l = 1;
+        long r = 0;
 
-        while (left <= right) {
-            long mid = (left + right) / 2;
-            long count = 0;
+        for (int time : times) {
+            r = Math.max(r, time);
+        }
+        r *= n;
+        
+        long ans = r;
 
-            // mid 시간 안에 몇 명 심사 가능한지 계산
+        while (l <= r) {
+            long mid = (l + r) / 2;
+
+            long cnt = 0;
             for (int time : times) {
-                count += mid / time;
+                cnt += mid / time;
+                if (cnt >= n) break;
             }
 
-            if (count >= n) {
-                // 충분히 심사 가능  시간을 줄여본다
-                answer = mid;
-                right = mid - 1;
+            if (cnt >= n) {
+                ans = mid;
+                r = mid - 1;
             } else {
-                // 부족함  시간을 늘려야 함
-                left = mid + 1;
+                l = mid + 1;
             }
         }
 
-        return answer;
+        return ans;
     }
 }
